@@ -8,8 +8,13 @@
   --bg-beigeLight: hsla(41, 57%, 83%, 0.863);
 }
 
+button:hover {
+  cursor: pointer;
+}
+
 body {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   font-family: 'Inter', sans-serif;
@@ -22,7 +27,21 @@ body {
   background: var(--bg-beigeLight);
 }
 
-h1 {
+header h1 {
   padding: 2rem;
-  font-size: 5rem;
+  font-size: 2rem;
+}
+
+table th {
+  width: 15rem;
+  height: 4rem;
+  background: #0f4c81;
+  border: 1px solid red;
+  color: #fff;
+  font-size: 1.5rem;
+  font-weight: 100;
+}
+
+#colunaAcao {
+  text-align: center;
 }
