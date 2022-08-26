@@ -11,6 +11,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/modal.css" />
+    <script src="main.js" defer></script>
     <title>CRUD - Clientes</title>
   </head>
   <body>
@@ -18,10 +20,9 @@
       <h1 class="header-title">Cadastro de Clientes</h1>
     </header>
     <main>
-      <div class="novoCliente">
-        <button type="button">Novo cadastro</button>
-      </div>
-      <table>
+      <button type="button" id="cadastrarCliente">Novo cadastro</button>
+
+      <table class="registros">
         <thead>
           <tr>
             <th>Nome</th>
@@ -38,12 +39,13 @@
             <td>content3</td>
             <td>content4</td>
             <td id="colunaAcao">
-              <button>Editar</button>
-              <button>Editar</button>
+              <button id="btnEditar">Editar</button>
+              <button>Remover</button>
             </td>
           </tr>
         </tbody>
       </table>
     </main>
+    <footer></footer>
   </body>
 </html>
