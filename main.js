@@ -1,40 +1,32 @@
 const openModal = document
   .getElementById('modal')
-  .classList.add('active') /*roda esta funcao adicionando active na classe */
+  .classList.add('active') /*adiciona active na classe */
 
-document
-  .getElementById('cadastrarCliente')
-  .addEventListener('click', openModal) /*escuta clique*/
+document.getElementById('cadastrarCliente').addEventListener('click', openModal)
 
 const closeModal = document
   .getElementById('modal')
-  .classList.remove('active') /*roda esta funcao adicionando active na classe */
+  .classList.remove('active') /*remove active na classe */
 
-document
-  .getElementById('modalClose')
-  .addEventListener('click', closeModal) /*escuta clique*/
+document.getElementById('modalClose').addEventListener('click', closeModal)
 
 const tempClient = {
-  nome: 'Saulo',
-  email: 'crudteste@gmail.com',
-  celular: '989991234',
-  cep: '36680000'
+  nome: 'Saulossssss',
+  email: 'teste@teste.com.br',
+  celular: '329999999',
+  cep: '329999999'
 }
 
-function getDataLocalStorage() {
-  JSON.parse(localStorage.getItem('db_client')) ?? []
+const getDataStorage = () => {
+  JSON.parse(localStorage.getItem('dbClient')) ?? []
 }
 
-function setDataLocalStorage(dbClient) {
-  localStorage.setItem('db_client', JSON.stringify(dbClient))
+const setLocalStorage = clients => {
+  localStorage.setItem('dbClient', JSON.stringify(clients))
 }
 
-function createCliente(client) {
-  const clients = getDataLocalStorage()
+const createClient = client => {
+  const clients = [getDataStorage()]
   clients.push(client)
-  setDataLocalStorage(clients)
+  setLocalStorage(clients)
 }
-
-document
-  .getElementById('btnEditar')
-  .addEventListener('onclick', console.log('teste'))
