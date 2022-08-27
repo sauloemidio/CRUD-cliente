@@ -63,6 +63,7 @@ table th {
   background: var(--primary-color);
   color: #fff;
   font-weight: normal;
+  text-transform: uppercase;
 }
 
 table td {

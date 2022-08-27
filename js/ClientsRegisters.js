@@ -1,14 +1,14 @@
-const openModal = document
-  .getElementById('modal')
-  .classList.add('active') /*adiciona active na classe */
+export class ClientsRegisters {
+  constructor(root) {
+    this.root = document.querySelector(root)
+  }
+}
 
-document.getElementById('cadastrarCliente').addEventListener('click', openModal)
-
-const closeModal = document
-  .getElementById('modal')
-  .classList.remove('active') /*remove active na classe */
-
-document.getElementById('modalClose').addEventListener('click', closeModal)
+export class RegistrationView extends ClientsRegisters {
+  constructor(root) {
+    super(root)
+  }
+}
 
 const tempClient = {
   nome: 'Saulossssss',
