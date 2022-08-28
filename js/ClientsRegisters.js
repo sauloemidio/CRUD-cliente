@@ -8,6 +8,20 @@ export class RegistrationView extends ClientsRegisters {
   constructor(root) {
     super(root)
   }
+
+  openModal() {
+    const modal = this.root.querySelector('.modal')
+    const actualStyle = modal.style.display
+    if (actualStyle == 'block') {
+      modal.style.display = 'none'
+      console.log('passou aqui 1')
+    } else {
+      console.log('passou aqui else')
+      modal.style.display = 'block'
+    }
+  }
+
+  btnRegister = this.root.getElementById('#btnCadCliente')
 }
 
 const tempClient = {

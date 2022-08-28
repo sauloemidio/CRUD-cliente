@@ -7,7 +7,7 @@
   font-size: 62.5%;
   --bg-beigeLight: hsla(41, 57%, 83%, 0.863);
   --text-color: #303030;
-  --hue: 105;
+  --hue: 208;
   --primary-color: hsl(var(--hue), 79%, 32%);
   --btn-color: hsl(var(--hue), 60%, 80%);
 }
