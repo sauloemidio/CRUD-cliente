@@ -5,20 +5,15 @@ export class ClientsRegisters {
   }
 
   load() {
-    this.entries = [
-      {
-        nome: 'zezin',
-        email: 'teste@teste.com.br',
-        celular: '329999999',
-        cep: '329999999'
-      },
-      {
-        nome: 'João',
-        email: 'joaao@teste.com.br',
-        celular: '4329999999',
-        cep: '4329999999'
-      }
-    ]
+    this.entries = JSON.parse(localStorage.getItem('dbClient')) || []
+  }
+
+  delete(client) {
+    const filteredEntries = this.entries.filter(
+      entry => entry.nome !== client.nome
+    )
+    this.entries = filteredEntries
+    this.update()
   }
 }
 
@@ -39,21 +34,19 @@ export class RegistrationView extends ClientsRegisters {
       row.querySelector('.email').textContent = client.email
       row.querySelector('.celular').textContent = client.celular
       row.querySelector('.cep').textContent = client.cep
+      row.querySelector('.colunaAcao, .btnRemove').onclick = () => {
+        const isOk = confirm(`em certeza que deseja deletar ${client.nome}`)
+        if (isOk) {
+          this.delete(client)
+        }
+      }
       this.tbody.append(row)
     })
   }
 
   createRow() {
     const tr = document.createElement('tr')
-    const content = `
-    <td class="name">Zezin</td>
-    <td class="email">zezin@zezin.com.br</td>
-    <td class="celular">+5532984123341</td>
-    <td class="cep">36680000</td>
-    <td class="colunaAcao">
-      <button id="btnEditar">Editar</button>
-      <button>Remover</button>
-    </td>`
+    const content = ``
     tr.innerHTML = content
 
     return tr
@@ -82,10 +75,6 @@ export class RegistrationView extends ClientsRegisters {
 //   email: 'teste@teste.com.br',
 //   celular: '329999999',
 //   cep: '329999999'
-// }
-
-// const getDataStorage = () => {
-//   JSON.parse(localStorage.getItem('dbClient')) ?? []
 // }
 
 // const setLocalStorage = clients => {
