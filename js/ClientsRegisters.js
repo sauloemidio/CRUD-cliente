@@ -43,6 +43,15 @@ export class RegistrationView extends ClientsRegisters {
   constructor(root) {
     super(root)
     this.tbody = this.root.querySelector('table tbody')
+    this.modal = this.root.querySelector('#myModal')
+    this.btnRegisterNewClient = this.root.querySelector('#btnRegisterNewClient')
+    this.btnRegisterNewClient.addEventListener('click', () => {
+      this.modal.style.display = 'block'
+    })
+    this.btnCloseModal = this.root.querySelector('#btnCloseModal')
+    this.btnCloseModal.addEventListener('click', () => {
+      this.modal.style.display = 'none'
+    })
     this.update()
   }
 
