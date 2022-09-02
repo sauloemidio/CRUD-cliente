@@ -20,7 +20,7 @@
       <header>
         <h1 class="header-title">Cadastro de Clientes</h1>
 
-        <button type="button" class="btnRegisterNewClient">
+        <button class="btnBlue" type="button" id="btnRegisterNewClient">
           &plus; Novo cadastro
         </button>
       </header>
@@ -38,8 +38,38 @@
               <th>Ação</th>
             </tr>
           </thead>
-          <tbody></tbody>
+          <tbody>
+
+          </tbody>
         </table>
+        <div class="modal inactive">
+          <header class="header-modal">
+            <h1>Cadastro de Cliente</h1>
+            <span class="btnCloseModal">X</span>
+          </header>
+          <form class="modal-form">
+            <input
+              type="text"
+              class="modal-field"
+              placeholder="Nome do Cliente"
+            />
+            <input
+              type="email"
+              class="modal-field"
+              placeholder="E-mail do cliente"
+            />
+            <input
+              type="text"
+              class="modal-field"
+              placeholder="Celular do Cliente"
+            />
+            <input type="text" class="modal-field" placeholder="CEP" />
+          </form>
+          <footer class="modal-footer">
+            <button class="button-green">Salvar</button>
+            <button class="button-blue">Cancelar</button>
+          </footer>
+        </div>
       </main>
       <footer></footer>
     </div>

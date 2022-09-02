@@ -1,13 +1,17 @@
 .modal {
-  display: none;
   position: fixed;
-  z-index: 1;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  overflow: auto;
-  background-color: rgba(0, 0, 0, 0.6);
+  background: #000;
+  opacity: 0;
+  z-index: -1;
+}
+
+modal.active {
+  opacity: 1;
+  z-index: 1;
 }
 
 .modal-content {
@@ -16,6 +20,38 @@
   gap: 2rem;
   width: 50vw;
   margin: 15vh auto;
+  padding-bottom: 2rem;
   background-color: white;
   box-shadow: 1px 1px 10px black;
+}
+
+.modal-header {
+  display: flex;
+  position: relative;
+  justify-content: center;
+  height: 4rem;
+  line-height: 4rem;
+  font-size: 1rem;
+}
+
+.modal-close {
+  display: block;
+  width: 4rem;
+  height: 4rem;
+  text-align: center;
+  background-color: tomato;
+}
+
+.modal-form {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 2rem;
+  padding: auto;
+}
+
+.modal-footer {
+  background-color: inherit;
+  text-align: right;
+  padding: 0 20px;
 }

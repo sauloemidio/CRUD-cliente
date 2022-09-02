@@ -5,12 +5,20 @@ export class ClientsRegisters {
   }
 
   load() {
-    this.entries = JSON.parse(localStorage.getItem('dbClient')) || []
+    this.entries = [
+      {
+        name: 'Joao',
+        email: 'joao@joao.com.br',
+        celular: '99999999',
+        cep: '3668000'
+      }
+    ]
+    // this.entries = JSON.parse(localStorage.getItem('dbClient')) || []
   }
 
   delete(client) {
     const filteredEntries = this.entries.filter(
-      entry => entry.nome !== client.nome
+      entry => entry.name !== client.name
     )
     this.entries = filteredEntries
     this.update()
@@ -30,12 +38,12 @@ export class RegistrationView extends ClientsRegisters {
     this.entries.forEach(client => {
       const row = this.createRow()
 
-      row.querySelector('.name').textContent = client.nome
+      row.querySelector('.name').textContent = client.name
       row.querySelector('.email').textContent = client.email
       row.querySelector('.celular').textContent = client.celular
       row.querySelector('.cep').textContent = client.cep
-      row.querySelector('.colunaAcao, .btnRemove').onclick = () => {
-        const isOk = confirm(`em certeza que deseja deletar ${client.nome}`)
+      row.querySelector('#btnRemove').onclick = () => {
+        const isOk = confirm(`em certeza que deseja deletar ${client.name}`)
         if (isOk) {
           this.delete(client)
         }
@@ -46,7 +54,16 @@ export class RegistrationView extends ClientsRegisters {
 
   createRow() {
     const tr = document.createElement('tr')
-    const content = ``
+    const content = `<tr>
+    <td class="name">Zezin</td>
+    <td class="email">zezin@zezin.com.br</td>
+    <td class="celular">+5532984123341</td>
+    <td class="cep">36680000</td>
+    <td class="colunaAcao">
+      <button class="btnGreen" id="btnEdit">Editar</button>
+      <button class="btnRed" id="btnRemove">Remover</button>
+    </td>
+  </tr>`
     tr.innerHTML = content
 
     return tr
@@ -69,20 +86,3 @@ export class RegistrationView extends ClientsRegisters {
     })
   }
 }
-
-// const tempClient = {
-//   nome: 'Saulossssss',
-//   email: 'teste@teste.com.br',
-//   celular: '329999999',
-//   cep: '329999999'
-// }
-
-// const setLocalStorage = clients => {
-//   localStorage.setItem('dbClient', JSON.stringify(clients))
-// }
-
-// const createClient = client => {
-//   const clients = [getDataStorage()]
-//   clients.push(client)
-//   setLocalStorage(clients)
-// }

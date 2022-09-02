@@ -39,12 +39,23 @@ header h1 {
 }
 
 button {
-  background: var(--btn-color);
   border: none;
   border-radius: 0.4rem 0.4rem;
   height: 3.2rem;
   padding: 0 0.5rem;
   cursor: pointer;
+}
+
+.btnGreen {
+  background-color: lightgreen;
+}
+
+.btnRed {
+  background-color: lightsalmon;
+}
+
+.btnBlue {
+  background-color: lightblue;
 }
 
 button:hover {
