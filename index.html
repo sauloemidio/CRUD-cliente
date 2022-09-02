@@ -38,37 +38,39 @@
               <th>Ação</th>
             </tr>
           </thead>
-          <tbody>
-
-          </tbody>
+          <tbody></tbody>
         </table>
-        <div class="modal inactive">
-          <header class="header-modal">
-            <h1>Cadastro de Cliente</h1>
-            <span class="btnCloseModal">X</span>
-          </header>
-          <form class="modal-form">
-            <input
-              type="text"
-              class="modal-field"
-              placeholder="Nome do Cliente"
-            />
-            <input
-              type="email"
-              class="modal-field"
-              placeholder="E-mail do cliente"
-            />
-            <input
-              type="text"
-              class="modal-field"
-              placeholder="Celular do Cliente"
-            />
-            <input type="text" class="modal-field" placeholder="CEP" />
-          </form>
-          <footer class="modal-footer">
-            <button class="button-green">Salvar</button>
-            <button class="button-blue">Cancelar</button>
-          </footer>
+        <div id="myModal" class="modal">
+          <div class="modal-content">
+            <div class="modal-header">
+              <span class="close">&times;</span>
+              <h2>Cadastro de Cliente</h2>
+            </div>
+            <div class="modal-body">
+              <form class="modal-form">
+                <input
+                  type="text"
+                  class="modal-field"
+                  placeholder="Nome do Cliente"
+                />
+                <input
+                  type="email"
+                  class="modal-field"
+                  placeholder="E-mail do cliente"
+                />
+                <input
+                  type="text"
+                  class="modal-field"
+                  placeholder="Celular do Cliente"
+                />
+                <input type="text" class="modal-field" placeholder="CEP" />
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button class="button-green">Salvar</button>
+              <button class="button-blue">Cancelar</button>
+            </div>
+          </div>
         </div>
       </main>
       <footer></footer>

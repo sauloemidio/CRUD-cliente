@@ -5,15 +5,29 @@ export class ClientsRegisters {
   }
 
   load() {
-    this.entries = [
-      {
-        name: 'Joao',
-        email: 'joao@joao.com.br',
-        celular: '99999999',
-        cep: '3668000'
-      }
-    ]
-    // this.entries = JSON.parse(localStorage.getItem('dbClient')) || []
+    // this.entries = [
+    //   {
+    //     name: 'Joao',
+    //     email: 'joao@joao.com.br',
+    //     celular: '99999999',
+    //     cep: '3668000'
+    //   },
+    //   {
+    //     name: 'ste',
+    //     email: 'joao@joao.com.br',
+    //     celular: '99999999',
+    //     cep: '3668000'
+    //   }
+    // ]
+
+    // this.entries = JSON.parse(`[{
+    //   "name": "ste",
+    //   "email": "joao@joao.com.br",
+    //   "celular": "99999999",
+    //   "cep": "3668000"
+    // }]`)
+
+    this.entries = JSON.parse(localStorage.getItem('dbClient')) || []
   }
 
   delete(client) {
@@ -43,7 +57,7 @@ export class RegistrationView extends ClientsRegisters {
       row.querySelector('.celular').textContent = client.celular
       row.querySelector('.cep').textContent = client.cep
       row.querySelector('#btnRemove').onclick = () => {
-        const isOk = confirm(`em certeza que deseja deletar ${client.name}`)
+        const isOk = confirm(`Tem certeza que deseja deletar ${client.name}?`)
         if (isOk) {
           this.delete(client)
         }
@@ -55,10 +69,10 @@ export class RegistrationView extends ClientsRegisters {
   createRow() {
     const tr = document.createElement('tr')
     const content = `<tr>
-    <td class="name">Zezin</td>
-    <td class="email">zezin@zezin.com.br</td>
-    <td class="celular">+5532984123341</td>
-    <td class="cep">36680000</td>
+    <td class="name"></td>
+    <td class="email"></td>
+    <td class="celular">+</td>
+    <td class="cep"></td>
     <td class="colunaAcao">
       <button class="btnGreen" id="btnEdit">Editar</button>
       <button class="btnRed" id="btnRemove">Remover</button>
