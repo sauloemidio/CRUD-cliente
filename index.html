@@ -43,32 +43,44 @@
         <div id="myModal" class="modal">
           <div class="modal-content">
             <div class="modal-header">
+              <h2>Novo Cliente</h2>
               <span id="btnCloseModal" class="close">&times;</span>
-              <h2>Cadastro de Cliente</h2>
             </div>
             <div class="modal-body">
-              <form class="modal-form">
+              <form id="form" class="modal-form">
                 <input
                   type="text"
+                  id="nome"
                   class="modal-field"
                   placeholder="Nome do Cliente"
+                  required
                 />
                 <input
                   type="email"
+                  id="email"
                   class="modal-field"
                   placeholder="E-mail do cliente"
+                  required
                 />
                 <input
                   type="text"
+                  id="celular"
                   class="modal-field"
                   placeholder="Celular do Cliente"
+                  required
                 />
-                <input type="text" class="modal-field" placeholder="CEP" />
+                <input
+                  type="text"
+                  id="cep"
+                  class="modal-field"
+                  placeholder="CEP"
+                  required
+                />
               </form>
             </div>
             <div class="modal-footer">
-              <button class="button-green">Salvar</button>
-              <button class="button-blue">Cancelar</button>
+              <button class="btnBlue" id="btnSalvar">Salvar</button>
+              <button class="bbtnRed" id="btnCancelar">Cancelar</button>
             </div>
           </div>
         </div>

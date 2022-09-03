@@ -42,17 +42,40 @@ export class ClientsRegisters {
 export class RegistrationView extends ClientsRegisters {
   constructor(root) {
     super(root)
+
     this.tbody = this.root.querySelector('table tbody')
     this.modal = this.root.querySelector('#myModal')
-    this.btnRegisterNewClient = this.root.querySelector('#btnRegisterNewClient')
-    this.btnRegisterNewClient.addEventListener('click', () => {
-      this.modal.style.display = 'block'
-    })
-    this.btnCloseModal = this.root.querySelector('#btnCloseModal')
-    this.btnCloseModal.addEventListener('click', () => {
+    this.root.querySelector('#btnSalvar').onclick = () => {
+      this.root.querySelector()
+    }
+    this.root.querySelector('#btnCloseModal').onclick = () => {
       this.modal.style.display = 'none'
-    })
+    }
+    this.root.querySelector('#btnRegisterNewClient').onclick = () => {
+      this.modal.style.display = 'block'
+    }
+    this.root.querySelector('#btnCancelar').onclick = () => {
+      this.modal.style.display = 'none'
+    }
+    this.modal.querySelector('#btnSalvar').onclick = () => {
+      if (this.validInputs()) {
+        this.entries = [
+          {
+            name: this.modal.querySelector('#nome').value,
+            email: this.modal.querySelector('#email').value,
+            celular: this.modal.querySelector('#celular').value,
+            cep: this.modal.querySelector('#cep').value
+          }
+        ]
+      }
+      this.update()
+    }
+
     this.update()
+  }
+
+  validInputs() {
+    return this.root.querySelector('#form').reportValidity()
   }
 
   update() {
@@ -92,17 +115,6 @@ export class RegistrationView extends ClientsRegisters {
     return tr
   }
 
-  openModal() {
-    const modal = this.root.querySelector('.modal')
-    const actualStyle = modal.style.display
-    if (actualStyle == 'block') {
-      modal.style.display = 'none'
-      console.log('passou aqui 1')
-    } else {
-      console.log('passou aqui else')
-      modal.style.display = 'block'
-    }
-  }
   removeAllTr() {
     this.tbody.querySelectorAll('tr').forEach(tr => {
       tr.remove()
