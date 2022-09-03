@@ -5,29 +5,11 @@ export class ClientsRegisters {
   }
 
   load() {
-    // this.entries = [
-    //   {
-    //     name: 'Joao',
-    //     email: 'joao@joao.com.br',
-    //     celular: '99999999',
-    //     cep: '3668000'
-    //   },
-    //   {
-    //     name: 'ste',
-    //     email: 'joao@joao.com.br',
-    //     celular: '99999999',
-    //     cep: '3668000'
-    //   }
-    // ]
-
-    // this.entries = JSON.parse(`[{
-    //   "name": "ste",
-    //   "email": "joao@joao.com.br",
-    //   "celular": "99999999",
-    //   "cep": "3668000"
-    // }]`)
-
     this.entries = JSON.parse(localStorage.getItem('dbClient')) || []
+  }
+
+  save() {
+    localStorage.setItem('dbClient', JSON.stringify(this.entries))
   }
 
   delete(client) {
@@ -59,19 +41,22 @@ export class RegistrationView extends ClientsRegisters {
     }
     this.modal.querySelector('#btnSalvar').onclick = () => {
       if (this.validInputs()) {
-        this.entries = [
-          {
-            name: this.modal.querySelector('#nome').value,
-            email: this.modal.querySelector('#email').value,
-            celular: this.modal.querySelector('#celular').value,
-            cep: this.modal.querySelector('#cep').value
-          }
-        ]
+        this.dataClient()
       }
+      this.entries = [this.newClient, ...this.entries]
       this.update()
     }
 
     this.update()
+  }
+
+  dataClient() {
+    this.newClient = {
+      name: this.modal.querySelector('#nome').value,
+      email: this.modal.querySelector('#email').value,
+      celular: this.modal.querySelector('#celular').value,
+      cep: this.modal.querySelector('#cep').value
+    }
   }
 
   validInputs() {
@@ -82,19 +67,22 @@ export class RegistrationView extends ClientsRegisters {
     this.removeAllTr()
 
     this.entries.forEach(client => {
-      const row = this.createRow()
+      if (client.name != undefined) {
+        const row = this.createRow()
 
-      row.querySelector('.name').textContent = client.name
-      row.querySelector('.email').textContent = client.email
-      row.querySelector('.celular').textContent = client.celular
-      row.querySelector('.cep').textContent = client.cep
-      row.querySelector('#btnRemove').onclick = () => {
-        const isOk = confirm(`Tem certeza que deseja deletar ${client.name}?`)
-        if (isOk) {
-          this.delete(client)
+        row.querySelector('.name').textContent = client.name
+        row.querySelector('.email').textContent = client.email
+        row.querySelector('.celular').textContent = client.celular
+        row.querySelector('.cep').textContent = client.cep
+        row.querySelector('#btnRemove').onclick = () => {
+          const isOk = confirm(`Tem certeza que deseja deletar ${client.name}?`)
+          if (isOk) {
+            this.delete(client)
+          }
         }
+        this.tbody.append(row)
+        this.save()
       }
-      this.tbody.append(row)
     })
   }
 
