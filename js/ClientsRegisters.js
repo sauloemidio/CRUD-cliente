@@ -10,6 +10,15 @@ export class ClientsRegisters {
 
   save() {
     localStorage.setItem('dbClient', JSON.stringify(this.entries))
+    this.cleanInput()
+  }
+
+  edit(client) {
+    this.modal.style.display = 'block'
+    this.modal.querySelector('#nome').value = client.name
+    this.modal.querySelector('#email').value = client.email
+    this.modal.querySelector('#celular').value = client.celular
+    this.modal.querySelector('#cep').value = client.cep
   }
 
   delete(client) {
@@ -27,18 +36,21 @@ export class RegistrationView extends ClientsRegisters {
 
     this.tbody = this.root.querySelector('table tbody')
     this.modal = this.root.querySelector('#myModal')
-    this.root.querySelector('#btnSalvar').onclick = () => {
-      this.root.querySelector()
-    }
+
     this.root.querySelector('#btnCloseModal').onclick = () => {
       this.modal.style.display = 'none'
     }
+
     this.root.querySelector('#btnRegisterNewClient').onclick = () => {
       this.modal.style.display = 'block'
+      this.focuInput()
     }
+
     this.root.querySelector('#btnCancelar').onclick = () => {
       this.modal.style.display = 'none'
+      this.cleanInput()
     }
+
     this.modal.querySelector('#btnSalvar').onclick = () => {
       if (this.validInputs()) {
         this.dataClient()
@@ -74,6 +86,9 @@ export class RegistrationView extends ClientsRegisters {
         row.querySelector('.email').textContent = client.email
         row.querySelector('.celular').textContent = client.celular
         row.querySelector('.cep').textContent = client.cep
+        row.querySelector('#btnEdit').onclick = () => {
+          this.edit(client)
+        }
         row.querySelector('#btnRemove').onclick = () => {
           const isOk = confirm(`Tem certeza que deseja deletar ${client.name}?`)
           if (isOk) {
@@ -81,9 +96,9 @@ export class RegistrationView extends ClientsRegisters {
           }
         }
         this.tbody.append(row)
-        this.save()
       }
     })
+    this.save()
   }
 
   createRow() {
@@ -107,5 +122,17 @@ export class RegistrationView extends ClientsRegisters {
     this.tbody.querySelectorAll('tr').forEach(tr => {
       tr.remove()
     })
+  }
+
+  cleanInput() {
+    const inputs = this.modal.querySelectorAll('#nome, #email, #celular, #cep')
+    inputs.forEach(input => {
+      input.value = ''
+      this.focuInput()
+    })
+  }
+
+  focuInput() {
+    this.modal.querySelector('#nome').focus()
   }
 }
