@@ -8,7 +8,7 @@ export class ClientsRegisters {
     this.entries = JSON.parse(localStorage.getItem('dbClient')) || []
   }
 
-  save() {
+  save(client) {
     localStorage.setItem('dbClient', JSON.stringify(this.entries))
     this.cleanInput()
   }
